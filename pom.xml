@@ -1,62 +1,79 @@
-<!DOCTYPE html>
-	<html xmlns="http://www.w3.org/1999/xhtml"
-	  	xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Taco Cloud</title>
-		<link rel="stylesheet" th:href="@{/styles.css}" />
-	</head>
-	<body>
-		<h1>Design your taco!</h1>
-		<img th:src="@{/images/TacoCloud.png}"/>
-		<form method="POST" th:object="${taco}">
-			<div class="grid">
-				<div class="ingredient-group" id="wraps">
-					<h3>Designate your wrap:</h3>
-					<div th:each="ingredient : ${wrap}">
-						<input th:field="*{ingredients}" type="checkbox"
-							   th:value="${ingredient.id}"/>
-						<span th:text="${ingredient.name}">INGREDIENT</span><br/>
-					</div>
-				</div>
-				<div class="ingredient-group" id="proteins">
-					<h3>Pick your protein:</h3>
-					<div th:each="ingredient : ${protein}">
-						<input th:field="*{ingredients}" type="checkbox"
-							   th:value="${ingredient.id}"/>
-						<span th:text="${ingredient.name}">INGREDIENT</span><br/>
-					</div>
-				</div>
-				<div class="ingredient-group" id="cheeses">
-					<h3>Choose your cheese:</h3>
-					<div th:each="ingredient : ${cheese}">
-						<input th:field="*{ingredients}" type="checkbox"
-							   th:value="${ingredient.id}"/>
-						<span th:text="${ingredient.name}">INGREDIENT</span><br/>
-					</div>
-				</div>
-				<div class="ingredient-group" id="veggies">
-					<h3>Determine your veggies:</h3>
-					<div th:each="ingredient : ${veggies}">
-						<input th:field="*{ingredients}" type="checkbox"
-							   th:value="${ingredient.id}"/>
-						<span th:text="${ingredient.name}">INGREDIENT</span><br/>
-					</div>
-				</div>
-				<div class="ingredient-group" id="sauces">
-					<h3>Select your sauce:</h3>
-					<div th:each="ingredient : ${sauce}">
-						<input th:field="*{ingredients}" type="checkbox"
-							   th:value="${ingredient.id}"/>
-						<span th:text="${ingredient.name}">INGREDIENT</span><br/>
-					</div>
-				</div>
-			</div>
-			<div>
-				<h3>Name your taco creation:</h3>
-				<input type="text" th:field="*{name}"/>
-				<br/>
-				<button>Submit Your Taco</button>
-			</div>
-		</form>
-	</body>
-</html>
+<?xml version="1.0" encoding="UTF-8"?><project
+		xmlns="http://maven.apache.org/POM/4.0.0"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+ https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.3</version>
+		<relativePath />
+	</parent>
+	<groupId>sia</groupId>
+	<artifactId>taco-cloud</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>taco-cloud</name>
+	<description>Taco Cloud Example</description>
+	<properties>
+		<java.version>11</java.version>
+	</properties>
+	<dependencies>
+		<dependency><groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</pluginRepository>
+	</pluginRepositories>
+</project>
